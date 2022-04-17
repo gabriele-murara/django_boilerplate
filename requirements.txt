@@ -1,0 +1,9 @@
+wheel
+setuptools
+asgiref==3.5.0
+backports.zoneinfo==0.2.1
+Django==4.0.4
+sqlparse==0.4.2
+mysqlclient==1.4.6
+python-json-logger==2.0.2
+djangorestframework==3.11.2
