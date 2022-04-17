@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'django_boilerplate.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'database_name',
+        'USER': 'username',
+        'PASSWORD': 'S3cr3t!',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
     }
 }
 
@@ -121,3 +125,57 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Since among loggers and handlers levels the one which wins is the highest,
+# keep the 'base' logger level to DEBUG (low) and set the desired level in the
+# handler to get just the needed logs on a per-handler basis
+LOGGING = {
+    'version': 1,
+    'formatters': {
+        'default': {
+            'format': '%(asctime)s %(process)d: %(levelname)s [%(module)s:'
+                      '%(name)s:%(funcName)s:%(lineno)d] - %(message)s'
+        },
+        'json': {
+            'format': '%(asctime)s %(levelname)s %(message)s',
+            '()': 'pythonjsonlogger.jsonlogger.JsonFormatter'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/boilerplate.log',
+            'formatter': 'default',
+            'maxBytes': 1024 * 1024 * 1024 * 10,
+            'backupCount': 7,
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler'
+        },
+        'dev_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/boilerplate_dev.log',
+            'formatter': 'json',
+            'maxBytes': 1024 * 1024 * 10,
+            'backupCount': 3
+        },
+        'file_json': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/boilerplate_json.log',
+            'formatter': 'json',
+            'maxBytes': 1024 * 1024 * 1024 * 10,
+            'backupCount': 7,
+        },
+    },
+    'loggers': {
+        'base': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    }
+}
