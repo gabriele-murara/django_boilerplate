@@ -7,3 +7,4 @@ sqlparse==0.4.2
 mysqlclient==1.4.6
 python-json-logger==2.0.2
 djangorestframework==3.11.2
+django-environ==0.4.5

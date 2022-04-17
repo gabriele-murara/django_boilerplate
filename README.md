@@ -46,6 +46,14 @@ settings/default.py
 ```
 it's recommended to overwrite settings via .env file
 
+copy the .env.sample file to .env
+
+```
+cp .env.sample .env
+```
+
+and populate it with your values
+
 ## Logging
 
 Logger is configured in 
