@@ -1,6 +1,6 @@
 import logging
 
-APP_VERSION = '1.0-dev'
+APP_VERSION = '1.0'
 __version__ = APP_VERSION
 __alias__ = 'Django Boilerplate'
 
