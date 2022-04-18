@@ -2,7 +2,7 @@ import logging
 from django.conf import settings
 
 
-APP_VERSION = '1.1-dev'
+APP_VERSION = '1.1'
 __version__ = APP_VERSION
 __alias__ = settings.APP_NAME
 
