@@ -119,7 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = env.str('STATIC_URL', 'http://localhost:8000/')
+STATIC_URL = env.str('STATIC_URL', '/static/')
 STATIC_ROOT = env.str('STATIC_ROOT', 'static/')
 
 # Default primary key field type
