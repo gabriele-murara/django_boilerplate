@@ -30,6 +30,8 @@ Env.read_env(os.path.join(BASE_DIR, ".env"))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str('SECRET_KEY', default='this-key-is-unsecure')
 
+APP_NAME = env.str('APP_NAME', default='Django Boilerplate')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -45,6 +47,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'login_boilerplate',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -116,6 +122,21 @@ USE_I18N = True
 USE_TZ = True
 
 
+# Account Config
+ACCOUNT_ACTIVATION_DAYS = env.int('ACCOUNT_ACTIVATION_DAYS', default=7)
+LOGIN_URL = env.str('LOGIN_URL', default='/login/')
+LOGOUT_REDIRECT_URL = env.str('LOGOUT_REDIRECT_URL', default='/login/')
+LOGIN_REDIRECT_URL = env.str('LOGIN_REDIRECT_URL', default='/home/')
+
+# Email config
+DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL')
+EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS', default=False)
+EMAIL_HOST = env.str('EMAIL_HOST')
+EMAIL_PORT = env.int('EMAIL_PORT')
+EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
@@ -148,7 +169,7 @@ LOGGING = {
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': 'logs/boilerplate.log',
             'formatter': 'default',
-            'maxBytes': 1024 * 1024 * 1024 * 10,
+            'maxBytes': 1024 * 1024 * 10,
             'backupCount': 7,
         },
         'console': {
@@ -168,7 +189,7 @@ LOGGING = {
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': 'logs/boilerplate_json.log',
             'formatter': 'json',
-            'maxBytes': 1024 * 1024 * 1024 * 10,
+            'maxBytes': 1024 * 1024 * 10,
             'backupCount': 7,
         },
     },

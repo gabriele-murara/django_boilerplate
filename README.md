@@ -7,7 +7,7 @@ you can easily configure it with another database engine).
 
 - python3
 
-## Install
+## Clone repository
 
 Clone repository
 
@@ -72,13 +72,23 @@ it's recommended to overwrite database settings via .env file
 
 ## Project informations
 
-Project's information are in  
-```
-dango_boilerplate/__init__.py
-```
-This file is loaded at the starting of the entire project
+Project informations are loaded from .env file and are registered in 
 
-You can change them with your informations:
+```
+django_boilerplate/__init__.py
+``` 
 
-- \_\_version__
-- \_\_alias__
+## Login Boilerplate
+
+This project comes with a generic login app named login_boilerplate that you 
+can easily configure via .env file.
+
+Templates configuration is now work in progress
+
+
+## Install
+
+```
+python manage.py migrate
+python manage.py collectstatic
+```

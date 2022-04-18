@@ -1,8 +1,10 @@
 import logging
+from django.conf import settings
+
 
 APP_VERSION = '1.1-dev'
 __version__ = APP_VERSION
-__alias__ = 'Django Boilerplate'
+__alias__ = settings.APP_NAME
 
 logger = logging.getLogger('base')
 

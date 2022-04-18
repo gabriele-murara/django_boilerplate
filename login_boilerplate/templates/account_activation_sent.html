@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+Email sent
+{% endblock %}
+
+{% block content %}
+
+{% csrf_token %}
+
+We have sent you an activation email.
+
+<a href="/login/">Login</a>
+<a href="/logout/">Logout</a>
+{% endblock %}
